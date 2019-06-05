@@ -13,6 +13,12 @@ public class DatabaseHelper {
 
     public static Connection connectAndOpenDatabase(){
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("PASSED");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
             System.err.println("SQL CONNECTION ERROR : "+e.toString());

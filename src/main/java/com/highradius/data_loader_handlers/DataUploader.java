@@ -2,6 +2,7 @@ package com.highradius.data_loader_handlers;
 
 import com.highradius.databasehandlers.DatabaseHelper;
 import com.highradius.models.Invoice;
+import com.highradius.models.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,16 +24,51 @@ public class DataUploader {
             "valid_open_amount,customer_name) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     public DataUploader() {
+
         connection = DatabaseHelper.connectAndOpenDatabase();
+
+    }
+
+    public User uploadUser(User user) {
+        String mail = user.getEmail();
+        String userId = mail.substring(0, mail.indexOf("@"));
+        try {
+            preparedStatement = connection.prepareStatement(paramQuery);
+        } catch (SQLException e) {
+            System.err.println("Prepared Statement ERROR : " + e.toString());
+            return null;
+        }
+
+        paramQuery = "INSERT INTO employee VALUES (?,?,?,?,?,?);";
+
+        try {
+            preparedStatement = connection.prepareStatement(paramQuery);
+            preparedStatement.setString(1, userId);
+            preparedStatement.setString(2, user.getName());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(5, user.getGender() + "");
+            preparedStatement.setString(6, user.getAddress());
+
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            System.err.println("Prepared Statement ERROR : " + e.toString());
+            return null;
+        }
+
+        return user;
+    }
+
+
+
+    public void uploadInvoices(ArrayList<Invoice> invoices) {
+
         try {
             preparedStatement = connection.prepareStatement(paramQuery);
         } catch (SQLException e) {
             System.err.println("Prepared Statement ERROR : " + e.toString());
             return;
         }
-    }
-
-    public void uploadInvoices(ArrayList<Invoice> invoices) {
         for (Invoice invoice : invoices) {
             try {
                 if (invoice.getAccount_id() == -1)
