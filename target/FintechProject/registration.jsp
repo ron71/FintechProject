@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 1605301
+  User: captain_rkr
   Date: 6/5/2019
   Time: 8:05 PM
   To change this template use File | Settings | File Templates.
@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <div class="container jumbotron">
+    <div class="container jumbotron" style="margin: 80px">
         <center>
             <h1>Welcome to High Radius!</h1><br>
             <h4>Please register yourself...</h4>
@@ -22,7 +22,7 @@
         <form action="register" method="post">
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" class="form-control" id="name" name="user_name" placeholder="Full Name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
             </div>
             <div class="form-group">
                 <label for="email">Email address</label>
@@ -47,6 +47,8 @@
 
             <button class="btn btn-primary" type="submit" value="Register" name="register">Register</button>
         </form>
+
+        <center>Already a user then click <h5><a href="login.jsp">Login</a></h5></center>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

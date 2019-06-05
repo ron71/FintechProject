@@ -1,3 +1,4 @@
+<%@ page import="java.io.PrintWriter" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -36,6 +37,13 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
+<%--            <% PrintWriter writer = response.getWriter();--%>
+<%--                String name = (String)session.getAttribute("name");--%>
+<%--                    if(name!=null){--%>
+<%--                        writer.print();--%>
+<%--                    }--%>
+
+<%--            %>--%>
             <div class="form-inline my-2 my-lg-0">
                 <a href="registration.jsp" class="btn btn-outline-light my-2 my-sm-0">Register</a>
                 &nbsp;&nbsp;

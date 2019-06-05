@@ -52,7 +52,7 @@ public class RegistrationServlet extends javax.servlet.http.HttpServlet {
         try {
             writer = response.getWriter();
             if(dataUploader.uploadUser(u)!=null)
-                writer.print(htmlSuccessTemplate);
+               response.sendRedirect("login.jsp");
             else
                 writer.print(htmlFailTemplate);
         } catch (IOException e) {
